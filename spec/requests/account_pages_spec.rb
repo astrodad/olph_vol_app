@@ -42,14 +42,11 @@ describe "Account Pages" do
 
 			describe "after saving account" do
 				before { click_button submit }
-        let(:account) { FactoryGirl.create(:account) }
-
-        it { should have_selector('title', text: account.name) }
-        it { should have_selector('div.alert.alert-success', text: 'Welcome') }
-        it { should have_link('Sign out') }
-
         
 
+        it { should have_selector('title', text: full_title("Example account")) }
+        it { should have_selector('div.alert.alert-success', text: 'Account created successfully!') }
+        it { should have_link('Sign out') }
 
 			end
 
