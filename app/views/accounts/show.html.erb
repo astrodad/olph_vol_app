@@ -1,0 +1,21 @@
+<% provide(:title, @account.name) %>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @account.name %>
+</p>
+
+<p>
+  <b>Year:</b>
+  <%= @account.year %>
+</p>
+
+<p>
+  <b>Admin:</b>
+  <%= @account.admin %>
+</p>
+
+
+<%= link_to 'Edit', edit_account_path(@account) %> |
+<%= link_to 'Back', accounts_path %>
