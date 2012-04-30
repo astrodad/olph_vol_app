@@ -1,1 +1,30 @@
 <h1>OLPH School Volunteer Center</h1>
+<% if signed_in? %>
+  <div class="row">
+    <aside class="span4">
+      <section>
+        <p>Coming soon: account info</p>
+      </section>
+      <section>
+        <p>Coming soon: form to enter in hours quickly</p>
+      </section>
+    </aside>
+    <div class="span8">
+      <h3>Coming Soon...hours "feed" with recent hours</h3>
+      
+    </div>
+  </div>  
+<% else %>
+  <div class="center hero-unit">
+    <h1>Welcome to the OLPH Volunteer Center App</h1>
+
+    <h2>
+      Coming soon: Content here will be replaced by actual useful information.
+    </h2>
+
+    <%= link_to "Sign up now!", signup_path, 
+                                class: "btn btn-large btn-primary" %>
+  </div>
+
+  
+<% end %> 
