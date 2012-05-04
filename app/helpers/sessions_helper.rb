@@ -8,6 +8,11 @@ module SessionsHelper
     !current_account.nil?
   end
 
+  def admin_account?
+    current_account.admin?
+  end
+
+
   def current_account=(account)
     @current_account = account
   end

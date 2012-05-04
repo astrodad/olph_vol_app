@@ -1,6 +1,11 @@
 class AccountsController < ApplicationController
 
   include SessionsHelper
+  
+  before_filter :signed_in_account, only: [:edit, :update]
+  before_filter :correct_account,   only: [:edit, :update, :show]
+  before_filter :admin_account,     only: [:index]
+  
   # GET /accounts
   # GET /accounts.json
   def index
@@ -15,7 +20,10 @@ class AccountsController < ApplicationController
   # GET /accounts/1
   # GET /accounts/1.json
   def show
+
+
     @account = Account.find(params[:id])
+    @workers = @account.workers
 
     respond_to do |format|
       format.html # show.html.erb
@@ -23,15 +31,13 @@ class AccountsController < ApplicationController
     end
   end
 
-  # GET /accounts/new
-  # GET /accounts/new.json
+  
   def new
-    @account = Account.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @account }
-    end
+    @account = Account.new
+    3.times { @account.workers.build}
+
+
   end
 
   # GET /accounts/1/edit
@@ -80,3 +86,17 @@ class AccountsController < ApplicationController
     end
   end
 end
+
+private
+
+  def correct_account
+      @account = Account.find(params[:id])
+      if !(current_account?(@account) || current_account.admin?)
+        redirect_to(current_account)
+      end
+      
+    end
+
+  def admin_account
+      redirect_to(current_account) unless current_account.admin?
+  end

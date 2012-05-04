@@ -1,0 +1,6 @@
+<% if @workstream_items.any? %>
+  <ol class="microposts">
+    <%= render partial: 'shared/work_item', collection: @workstream_items %>
+  </ol>
+  <%= will_paginate @workstream_items %>
+<% end %>

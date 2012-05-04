@@ -119,4 +119,11 @@ describe "when email address is already taken" do
     its(:remember_token) { should_not be_blank }
   end
 
+  describe "with workers associated" do
+    before {@worker = @account.workers.build(name: "Bob the tester")}
+
+    its(:workers) {should_not be_blank}
+    
+  end
+
 end

@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@account, @worker, @volunteerevent) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+      <%= options_from_collection_for_select(@account.workers, :id, :id) %>
+
+      
+      
+      <%= f.submit "Post", class: "btn btn-large btn-primary" %>
+
+    <% end %>
+  </div>
+</div>

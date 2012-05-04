@@ -1,10 +1,19 @@
 Volunteer::Application.routes.draw do
 
-  resources :accounts
+  resources :accounts do
+    resources :workers
+
+  end
+
+  resources :volunteer_events
+    
+  
+
   resources :sessions, only: [:new, :create, :destroy]
 
   root to: 'static_pages#home'
   
+
   match '/signup',  to: 'accounts#new' 
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete

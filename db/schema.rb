@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120430130136) do
+ActiveRecord::Schema.define(:version => 20120502164957) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -26,5 +26,36 @@ ActiveRecord::Schema.define(:version => 20120430130136) do
 
   add_index "accounts", ["email"], :name => "index_accounts_on_email", :unique => true
   add_index "accounts", ["remember_token"], :name => "index_accounts_on_remember_token"
+
+  create_table "event_types", :force => true do |t|
+    t.string   "name"
+    t.integer  "multiplier"
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "volunteer_events", :force => true do |t|
+    t.string   "name"
+    t.date     "event_date"
+    t.integer  "hours_worked"
+    t.integer  "eventtype"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "worker_id"
+  end
+
+  add_index "volunteer_events", ["eventtype", "created_at"], :name => "index_volunteer_events_on_eventtype_and_created_at"
+  add_index "volunteer_events", ["worker_id"], :name => "index_volunteer_events_on_worker_id"
+
+  create_table "workers", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.integer  "account_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "workers", ["account_id", "created_at"], :name => "index_workers_on_account_id_and_created_at"
 
 end

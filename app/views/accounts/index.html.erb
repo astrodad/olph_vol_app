@@ -1,27 +1,28 @@
-<h1>Listing accounts</h1>
+<h1>All Accounts</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Year</th>
-    <th>Admin</th>
-    <th></th>
-    <th></th>
-    <th></th>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Year</th>
+      <th>Hours Completed</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </thead>
   </tr>
-
+  <tbody>
 <% @accounts.each do |account| %>
-  <tr>
-    <td><%= account.name %></td>
-    <td><%= account.year %></td>
-    <td><%= account.admin %></td>
-    <td><%= link_to 'Show', account %></td>
-    <td><%= link_to 'Edit', edit_account_path(account) %></td>
-    <td><%= link_to 'Destroy', account, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+    <tr>
+      <td><%= account.name %></td>
+      <td><%= account.year %></td>
+      <td><%= account.total_hours_worked %></td>
+      <td><%= link_to 'Show', account %></td>
+      <td><%= link_to 'Edit', edit_account_path(account) %></td>
+      <td><%= link_to 'Destroy', account, confirm: 'Are you sure?', method: :delete %></td>
+    </tr>
+  </tbody>
 <% end %>
 </table>
 
 <br />
-
-<%= link_to 'New Account', new_account_path %>

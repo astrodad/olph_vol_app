@@ -9,15 +9,23 @@
       <%= f.label :email %>
       <%= f.text_field :email %>
 
+      <%= f.label :admin %>
+      <%= f.text_field :admin %>
+
       <%= f.label :password %>
       <%= f.password_field :password %>
 
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation %>
 
-      
+      <p> Name up to three people who will work as volunteers for this account: </p>
 
+      <%= f.fields_for :workers do |builder| %>
+        <%= render "worker_fields" , :f => builder %>
+      <% end %>
+      
       <%= f.submit "Create our account", class: "btn btn-large btn-primary" %>
+
     <% end %>
   </div>
 </div>

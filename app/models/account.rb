@@ -1,5 +1,5 @@
 class Account < ActiveRecord::Base
-  attr_accessible :name, :password, :password_confirmation, :email, :year, :admin
+  attr_accessible :name, :password, :password_confirmation, :email, :year, :admin, :workers_attributes
   has_secure_password
 
   before_save {|account| account.email = email.downcase }
@@ -16,9 +16,20 @@ class Account < ActiveRecord::Base
   
 
   def create_remember_token
-      self.remember_token = SecureRandom.urlsafe_base64
+    self.remember_token = SecureRandom.urlsafe_base64
+  end
+
+  def total_hours_worked
+    self.events.sum('hours_worked')
+  end
+
+  def events
+     VolunteerEvent.joins(:worker => :account).where(:accounts => {id: self.id})
   end
 
 
+  has_many :workers
+  
+  accepts_nested_attributes_for :workers, :reject_if => lambda { |a| a[:name].blank? }, :allow_destroy => true
 
 end
