@@ -6,6 +6,12 @@ namespace :db do
                  password: "foofoo12",
                  password_confirmation: "foofoo12")
     admin.toggle!(:admin)
+
+    3.times do
+      workername = Faker::Name.name
+      admin.workers.build(name: workername)
+    end
+
     
     10.times do |n|
       name  = Faker::Name.last_name + " Account"
@@ -21,7 +27,11 @@ namespace :db do
     accounts = Account.all
     3.times do
       workername = Faker::Name.name
-      accounts.each { |account| account.workers.build(name: workername) }
+      accounts.each { |account| account.workers.create!(name: workername) }
     end
+
+
+    
+
   end
 end

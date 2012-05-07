@@ -9,9 +9,6 @@
       <%= f.label :email %>
       <%= f.text_field :email %>
 
-      <%= f.label :admin %>
-      <%= f.text_field :admin %>
-
       <%= f.label :password %>
       <%= f.password_field :password %>
 
@@ -24,7 +21,7 @@
         <%= render "worker_fields" , :f => builder %>
       <% end %>
       
-      <%= f.submit "Create our account", class: "btn btn-large btn-primary" %>
+      <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
 
     <% end %>
   </div>
