@@ -1,14 +1,20 @@
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for(@account, @worker, @volunteerevent) do |f| %>
-    <%= render 'shared/error_messages', object: f.object %>
+          <% @event = VolunteerEvent.new %>
 
-      <%= options_from_collection_for_select(@account.workers, :id, :id) %>
+          <%= form_for(@event) do |f| %>
+       
+            <%= hidden_field_tag(:account, @account.id) %>
+            <%= f.label :name %>
+            <%= f.text_field :name, placeholder: "Enter in the event you worked." %>
 
-      
-      
-      <%= f.submit "Post", class: "btn btn-large btn-primary" %>
+            <%= f.label :event_date %>
+            <%= f.datepicker :event_date %>
 
-    <% end %>
-  </div>
-</div>
+            <%= f.label :hours_worked %>
+            <%= f.text_field :hours_worked, placeholder: "5" %>
+
+            <%= label_tag(:name, "Select the person who performed the work") %>
+            <%= select_tag(:worker, options_from_collection_for_select(@account.workers, :id, :name)) %>
+       
+            <%= f.submit "Post", class: "btn btn-large btn-primary" %>
+
+          <% end %>

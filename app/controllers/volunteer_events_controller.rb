@@ -1,5 +1,7 @@
 class VolunteerEventsController < ApplicationController
 
+	respond_to	:html, :js
+
 	include SessionsHelper
 
 	def create
@@ -17,4 +19,13 @@ class VolunteerEventsController < ApplicationController
 		redirect_to @account
 
 	end
+
+	def destroy
+		@volunteer_event = VolunteerEvent.find(params[:id])
+		@volunteer_event.destroy
+
+		respond_with(@volunteer_event) 
+     
+	end
+
 end

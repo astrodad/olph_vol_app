@@ -11,5 +11,7 @@ class VolunteerEvent < ActiveRecord::Base
 
   belongs_to :worker
   #belongs_to :eventtype
+
+  #default_scope include(:worker)
   
 end
