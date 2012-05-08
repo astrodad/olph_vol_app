@@ -65,8 +65,12 @@ class AccountsController < ApplicationController
 
     respond_to do |format|
       if @account.update_attributes(params[:account])
+        if !current_account.admin?
+          sign_in @account
+        end
+
         format.html { redirect_to @account, notice: 'Account was successfully updated.' }
-        format.json { head :no_content }
+
       else
         format.html { render action: "edit" }
         format.json { render json: @account.errors, status: :unprocessable_entity }
@@ -91,6 +95,8 @@ private
 
   def correct_account
       @account = Account.find(params[:id])
+      
+
       if !(current_account?(@account) || current_account.admin?)
         redirect_to(current_account)
       end
