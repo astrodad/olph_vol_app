@@ -4,7 +4,6 @@ $("#hours_worked_total").html("<%= @volunteer_event.worker.account.total_hours_w
 
 
 $("#volunteer_posting-<%=@volunteer_event.id %>")
-  .fadeOut ->
-    $(this).remove()
+  .fadeOut ->$(this).remove()
 
 
