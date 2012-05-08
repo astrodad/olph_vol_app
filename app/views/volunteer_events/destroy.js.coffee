@@ -1,9 +1,0 @@
-
-
-$("#hours_worked_total").html("<%= @volunteer_event.worker.account.total_hours_worked %>")
-
-
-$("#volunteer_posting-<%=@volunteer_event.id %>")
-  .fadeOut ->$(this).remove()
-
-
