@@ -21,6 +21,7 @@ class VolunteerEventsController < ApplicationController
 	end
 
 	def destroy
+		#This should usually respond to JS since we don't have code to use it via HTML.
 		@volunteer_event = VolunteerEvent.find(params[:id])
 		@volunteer_event.destroy
 
