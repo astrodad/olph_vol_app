@@ -7,7 +7,7 @@ class VolunteerEvent < ActiveRecord::Base
   validates :hours_worked, presence: true,
   									numericality: {only_integer: true}
   validates :event_date, presence: true
-  validates_date	:event_date, :on_or_before => lambda { Date.current }
+  validates_date	:event_date, :on_or_before => lambda { Date.current + 7 }
   
 
 

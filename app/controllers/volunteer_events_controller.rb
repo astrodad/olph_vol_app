@@ -6,6 +6,8 @@ class VolunteerEventsController < ApplicationController
 
 	def create
 
+		puts params[:volunteer_event]
+
 		@account = Account.find(params[:account])
 		@worker = Worker.find(params[:worker])
 		@event = @worker.VolunteerEvents.build(params[:volunteer_event])

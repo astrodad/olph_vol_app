@@ -7,7 +7,7 @@
             <%= f.text_field :name, placeholder: "Enter in the event you worked." %>
 
             <%= f.label :event_date %>
-            <%= f.datepicker :event_date %>
+            <%= f.datepicker :event_date, dateFormat: "yy-mm-dd", altFormat: "dd-mm-yy" %>
 
             <%= f.label :hours_worked %>
             <%= f.text_field :hours_worked, placeholder: "5" %>
