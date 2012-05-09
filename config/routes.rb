@@ -1,19 +1,21 @@
 Volunteer::Application.routes.draw do
 
+  get "password_resets/new"
+
   resources :accounts do
     resources :workers
 
   end
 
   resources :volunteer_events
-    
+  resources :password_resets
   
 
   resources :sessions, only: [:new, :create, :destroy]
 
   root to: 'static_pages#home'
   
-
+  match 'pass_reset', to: 'static_pages#pass_reset'
   match '/signup',  to: 'accounts#new' 
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete

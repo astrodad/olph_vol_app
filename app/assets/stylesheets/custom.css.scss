@@ -12,6 +12,12 @@ $grayMediumLight: #eaeaea;
 
 /* universal */
 
+a:hover {
+  color: #241998;
+  background-color: white;
+
+}
+
 html {
   overflow-y: scroll;
 }
@@ -84,8 +90,9 @@ p {
   font-weight: bold;
   line-height: 1;
   &:hover {
-    color: white;
+    color: $grayMediumLight;
     text-decoration: none;
+    background-color: #241998;
   }
 }
 
@@ -99,7 +106,8 @@ footer {
   a {
     color: $gray;
     &:hover { 
-      color: $grayDarker;
+      background-color: white;
+      color: #241998;
     }
   }  
   small { 

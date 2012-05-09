@@ -32,4 +32,20 @@ class Account < ActiveRecord::Base
   
   accepts_nested_attributes_for :workers, :reject_if => lambda { |a| a[:name].blank? }, :allow_destroy => true
 
+  def send_password_reset
+    generate_token(:password_reset_token)
+    self.password_reset_sent_at = Time.zone.now
+    temp_password = SecureRandom.urlsafe_base64
+    self.password = temp_password
+    self.password_confirmation = temp_password
+    save!
+    UserMailer.password_reset(self).deliver
+  end
+
+  def generate_token(column)
+    begin
+      self[column] = SecureRandom.urlsafe_base64
+    end while Account.exists?(column => self[column])
+  end
+
 end

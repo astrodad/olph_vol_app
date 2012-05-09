@@ -14,4 +14,7 @@ class StaticPagesController < ApplicationController
 
   def help
   end
+
+  def pass_reset
+  end
 end
