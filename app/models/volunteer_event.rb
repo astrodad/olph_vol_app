@@ -15,5 +15,7 @@ class VolunteerEvent < ActiveRecord::Base
   #belongs_to :eventtype
 
   #default_scope include(:worker)
+
+  WillPaginate.per_page = 15
   
 end

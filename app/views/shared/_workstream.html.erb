@@ -1,14 +1,25 @@
-    <% if @account.events.any? %>
-      <ol class="events">
-        <% @account.events.each do  |event| %>
-        	<div id="volunteer_posting-<%=event.id%>">
-            <li><strong><%= event.name %></strong> worked on <%= event.event_date.to_s(:long) %> by <i><%= event.worker.name %></i> for a total of <%= event.hours_worked %> hours. 
+    <% if @account.events.any? 
+        @events  = @account.events.paginate(page: params[:page], per_page: 15)%>
 
+      <table class="table table-striped">
+        <tbody>
+  
+        <% @events.each do  |event| %>
+        <tr id="volunteer_posting-<%=event.id%>">
+        	<td>
+            <strong><%= event.name %></strong> worked on <%= event.event_date.to_s(:long) %> by <i><%= event.worker.name %> for a total of <%= event.hours_worked %> hours.</td>
 
-            	<%= link_to '', event, method: :delete, confirm: "Are you sure you want to delete this volunteer posting?", title: event.name, class: "icon-remove", remote: true%> </li>
-            </div>
+            <td>
+            	<%= link_to '', event, method: :delete, confirm: "Are you sure you want to delete this volunteer posting?", title: event.name, class: "icon-remove", remote: true%>
+            </td>
+        </tr>
+            
         <% end %>
-      </ol>
+      </tbody>
+    </table>
+
+       <%= will_paginate @events %>
+
     <% else %>
       <p> No volunteer events found for this account. Go get to work! </p>
     <% end %>

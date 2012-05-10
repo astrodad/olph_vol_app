@@ -8,6 +8,12 @@ Volunteer::Application.routes.draw do
   end
 
   resources :volunteer_events
+
+  resources :descriptions do
+    get :autocomplete_description_name, on: :collection
+  end
+
+
   resources :password_resets
   
 

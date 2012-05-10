@@ -12,6 +12,7 @@ gem 'validates_timeliness', '~> 3.0.2'
 gem "dynamic_form"
 gem 'jquery_datepicker'
 gem 'jquery-rails'
+gem 'rails3-jquery-autocomplete'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'

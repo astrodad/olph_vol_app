@@ -1,5 +1,7 @@
 class VolunteerEventsController < ApplicationController
 
+	
+
 	respond_to	:html, :js
 
 	include SessionsHelper

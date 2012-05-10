@@ -119,6 +119,8 @@ GEM
       activesupport (= 3.2.3)
       bundler (~> 1.0)
       railties (= 3.2.3)
+    rails3-jquery-autocomplete (1.0.7)
+      rails (~> 3.0)
     railties (3.2.3)
       actionpack (= 3.2.3)
       activesupport (= 3.2.3)
@@ -210,6 +212,7 @@ DEPENDENCIES
   jquery_datepicker
   pg (= 0.12.2)
   rails (= 3.2.3)
+  rails3-jquery-autocomplete
   rb-fsevent (= 0.4.3.1)
   rspec-rails (= 2.9.0)
   sass-rails (~> 3.2)

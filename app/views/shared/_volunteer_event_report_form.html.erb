@@ -4,7 +4,9 @@
        
             <%= hidden_field_tag(:account, @account.id) %>
             <%= f.label :name %>
-            <%= f.text_field :name, placeholder: "Enter in the event you worked." %>
+
+            <%= f.autocomplete_field :name , '/descriptions/autocomplete_description_name'  %>
+           
 
             <%= f.label :event_date %>
             <%= f.datepicker :event_date, dateFormat: "yy-mm-dd", altFormat: "dd-mm-yy" %>
