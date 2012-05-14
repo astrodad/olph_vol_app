@@ -40,10 +40,10 @@ Volunteer::Application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
       :address            => "smtp.gmail.com",
-    :port                 => 587,
+    :port                 => 25,
     #:domain               => 'baci.lindsaar.net',
-    :user_name            => 'javierplumey@gmail.com',
-    :password             => 'm@rtin123',
+    :user_name            => 'volunteer-admin@olphschool.org',
+    :password             => '0lphv0l123',
     :authentication       => 'plain',
     :enable_starttls_auto => true  }
 
