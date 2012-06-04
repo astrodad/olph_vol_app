@@ -12,7 +12,7 @@
             <%= f.datepicker :event_date, dateFormat: "yy-mm-dd", altFormat: "dd-mm-yy" %>
 
             <%= f.label :hours_worked %>
-            <%= f.text_field :hours_worked, placeholder: "5" %>
+            <%= f.text_field :hours_worked %>
 
             <%= label_tag(:name, "Select the person who performed the work") %>
             <%= select_tag(:worker, options_from_collection_for_select(@account.workers, :id, :name)) %>
