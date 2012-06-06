@@ -1,27 +1,37 @@
+
+
 <h1>All Accounts</h1>
-<div class="row">
+<% if @accounts.any? 
+  
+  %>
 
-  <div class="span 4">
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Hours Completed</th>
-        <th></th>
-        <th></th>
-      </thead>
-    </tr>
-    <tbody>
-  <% @accounts.each do |account| %>
-      <tr>
-        <td><%= link_to account.name, account %></td>
-        <td><%= account.total_hours_worked %></td>
-        <td><%= link_to 'Edit', edit_account_path(account) %></td>
-        <td><%= link_to 'Destroy', account, confirm: 'Are you sure?', method: :delete %></td>
+  <div class="row">
+  
+  
+    
+    <table class="table" id="account_list">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Hours Completed</th>
+          <th></th>
+          <th></th>
+        </thead>
       </tr>
-    </tbody>
+      <tbody id="accountlist">
+
+     
+        <%= render :partial => 'account_list' %>
+
+      </tbody>
+    
+    </table>
+  <%= paginate @accounts, :remote => true %>
+  
+    
+
+  </div>
+  </div>
+  <% else %>
+      <p> No volunteer accounts found. </p>
   <% end %>
-  </table>
-</div>
-</div>

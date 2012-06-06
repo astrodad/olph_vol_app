@@ -23,6 +23,8 @@
       <%= f.fields_for :workers do |builder| %>
         <%= render "worker_fields" , :f => builder %>
       <% end %>
+
+      
       
       <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
 

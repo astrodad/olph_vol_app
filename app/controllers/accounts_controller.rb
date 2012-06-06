@@ -2,18 +2,18 @@ class AccountsController < ApplicationController
 
   include SessionsHelper
   
-  before_filter :signed_in_account, only: [:edit, :update]
-  before_filter :correct_account,   only: [:edit, :update, :show]
+  before_filter :signed_in_account, only: [:edit, :update, :show]
+  before_filter :correct_account,   only: [:edit, :update]
   before_filter :admin_account,     only: [:index]
   
   # GET /accounts
   # GET /accounts.json
   def index
-    @accounts = Account.all
+    @accounts = Account.page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @accounts }
+      format.js
     end
   end
 
@@ -43,6 +43,13 @@ class AccountsController < ApplicationController
   # GET /accounts/1/edit
   def edit
     @account = Account.find(params[:id])
+
+      
+      difference = 3 - @account.workers.count
+
+      if difference > 0
+        difference.times { @account.workers.build}
+      end
   end
 
   # POST /accounts
@@ -64,10 +71,9 @@ class AccountsController < ApplicationController
     @account = Account.find(params[:id])
 
     respond_to do |format|
+
+
       if @account.update_attributes(params[:account])
-        if !current_account.admin?
-          sign_in @account
-        end
 
         format.html { redirect_to @account, notice: 'Account was successfully updated.' }
 
@@ -96,11 +102,8 @@ private
   def correct_account
       @account = Account.find(params[:id])
       
-
-      if !(current_account?(@account) || current_account.admin?)
-        redirect_to(current_account)
-      end
-      
+      redirect_to(current_account) unless (current_account?(@account) || current_account.admin?)
+            
     end
 
   def admin_account

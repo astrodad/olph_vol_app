@@ -13,6 +13,8 @@ gem "dynamic_form"
 gem 'jquery_datepicker'
 gem 'jquery-rails'
 gem 'rails3-jquery-autocomplete'
+gem "kaminari", "~> 0.13.0"
+gem 'haml'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'

@@ -13,7 +13,7 @@ namespace :db do
     end
 
     
-    10.times do |n|
+    80.times do |n|
       name  = Faker::Name.last_name + " Account"
       email = "example-#{n+1}@olph.com"
       password  = "password"

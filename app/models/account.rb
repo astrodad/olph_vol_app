@@ -1,5 +1,10 @@
 class Account < ActiveRecord::Base
+
+  paginates_per 20
+  
   attr_accessible :name, :password, :password_confirmation, :email, :year, :admin, :workers_attributes
+  default_scope order: 'name ASC'
+
   has_secure_password
 
   before_save {|account| account.email = email.downcase }
@@ -31,6 +36,8 @@ class Account < ActiveRecord::Base
   has_many :workers
   
   accepts_nested_attributes_for :workers, :reject_if => lambda { |a| a[:name].blank? }, :allow_destroy => true
+
+  
 
   def send_password_reset
     generate_token(:password_reset_token)
