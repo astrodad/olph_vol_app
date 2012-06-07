@@ -56,6 +56,8 @@ class AccountsController < ApplicationController
   # POST /accounts.json
   def create
     @account = Account.new(params[:account])
+    @account.updating_password = true
+
     if @account.save
       sign_in @account
       flash[:success] = "Account created successfully!"
@@ -72,9 +74,18 @@ class AccountsController < ApplicationController
 
     respond_to do |format|
 
+      # If the current account is an admin user but not the account that is being modified,
+      # they will not have entered a password and we should just aassign the current password values
+      # to the account.
 
-      if @account.update_attributes(params[:account])
+    if current_account == @account
+      @account.updating_password = true
+    end
 
+    logger.debug "Token 1: #{@account.remember_token}"
+
+    if @account.update_attributes(params[:account])
+        logger.debug "Token 2: #{@account.remember_token}"
         format.html { redirect_to @account, notice: 'Account was successfully updated.' }
 
       else
@@ -100,6 +111,8 @@ end
 private
 
   def correct_account
+
+      logger.debug "-----inside correct account---"
       @account = Account.find(params[:id])
       
       redirect_to(current_account) unless (current_account?(@account) || current_account.admin?)
@@ -107,5 +120,6 @@ private
     end
 
   def admin_account
+      logger.debug "-----inside correct account---"
       redirect_to(current_account) unless current_account.admin?
   end

@@ -3,10 +3,10 @@
           <%= form_for(@event) do |f| %>
        
             <%= hidden_field_tag(:account, @account.id) %>
-            <%= f.label :name %>
+            <%= f.label "Enter the volunteer activity performed:" %>
 
             <%= f.autocomplete_field :name , '/descriptions/autocomplete_description_name'  %>
-           
+            <p class="help-block">Examples might include: Lunch duty, Green-White Envelope, May Fair, Breakfast with Santa, Field Trip </p>
 
             <%= f.label :event_date %>
             <%= f.datepicker :event_date, dateFormat: "yy-mm-dd", altFormat: "dd-mm-yy" %>

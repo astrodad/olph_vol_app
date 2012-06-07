@@ -3,6 +3,8 @@ class Account < ActiveRecord::Base
   paginates_per 20
   
   attr_accessible :name, :password, :password_confirmation, :email, :year, :admin, :workers_attributes
+  attr_accessor :updating_password #This is not a real field, just a placeholder when doing updates that require a password
+
   default_scope order: 'name ASC'
 
   has_secure_password
@@ -16,12 +18,16 @@ class Account < ActiveRecord::Base
   validates :email, presence: 	true,
   									format: 		{with: VALID_EMAIL_REGEX},
   									uniqueness: {case_insensitive: false}
-  validates :password, length: {minimum: 6}
-  validates :password_confirmation, presence: true
+
+  validates :password, length: {minimum: 6}, :if => :should_validate_password?
+  validates :password_confirmation, presence: true, :if => :should_validate_password?
+
   
 
   def create_remember_token
-    self.remember_token = SecureRandom.urlsafe_base64
+    if self.remember_token.nil?
+      self.remember_token = SecureRandom.urlsafe_base64
+    end
   end
 
   def total_hours_worked
@@ -53,6 +59,11 @@ class Account < ActiveRecord::Base
     begin
       self[column] = SecureRandom.urlsafe_base64
     end while Account.exists?(column => self[column])
+  end
+
+
+  def should_validate_password?
+    updating_password || new_record?
   end
 
 end

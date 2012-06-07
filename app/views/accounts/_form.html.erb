@@ -10,12 +10,15 @@
       <%= f.label "Primary email address associated with account:" %>
       <%= f.text_field :email %>
 
-      <%= f.label :password, "Please select a password that is at least six (6) characters long:" %>
-      <%= f.password_field :password %>
+      <% if (current_account == @account) || current_account.nil? %>
 
-      <%= f.label :password_confirmation, "Type in your password again to confirm:" %>
-      <%= f.password_field :password_confirmation %>
+        <%= f.label :password, "Please select a password that is at least six (6) characters long:"  %>
+        <%= f.password_field :password %>
 
+        <%= f.label :password_confirmation, "Type in your password again to confirm:" %>
+        <%= f.password_field :password_confirmation %>
+
+      <% end %>
       <p> Name up to three people who will work as volunteers for this account: </p>
 
       <p class="help-block">These are the names of the workers that will appear on your profile. You should enter values like John Smith, Jame Smith, Sue Sammy-Hoffman, etc.</p>
