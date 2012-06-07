@@ -3,12 +3,14 @@
         Account: <%= @account.name %>
       </h3>
       <section>
-        <span>
+        <p>
           School Year: <%= @account.year %>
-        </span>
-        <span>
-          Admin account? <%= @account.admin %>
-        </span>
+        </p>
+        <% if @account.admin? %>
+          <p>
+            This account has administrator privileges.
+          </p>
+        <% end %>
       </section>  
       <h4>
         Registered Volunteers:
