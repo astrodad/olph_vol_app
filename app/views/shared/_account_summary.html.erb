@@ -14,12 +14,18 @@
         Registered Volunteers:
       </h4>
 
-      <ol>
-        <% @account.workers.each do  |worker| %>
-            <li><%= worker.name %></li>
-        <% end %>
-      </ol>
-
+      <div style="padding:5px">
+        <ol>
+          <% @account.workers.each do  |worker| %>
+              <li><%= worker.name %>
+                <% if worker.stand_certified? %>
+                  <i class="icon-ok"></i>
+                <% end %>
+              </li>
+            <% end %>
+        </ol>
+        <p><i class="icon-ok"></i> = STAND certified. </p>
+      </div>
       <h4>Total hours worked: 
         <span id="hours_worked_total"><%= @account.events.any?? @account.events.sum("hours_worked") : 0 %></span> </h4>
 </div>

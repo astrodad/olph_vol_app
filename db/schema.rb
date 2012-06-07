@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120510002227) do
+ActiveRecord::Schema.define(:version => 20120607150527) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -66,8 +66,9 @@ ActiveRecord::Schema.define(:version => 20120510002227) do
     t.string   "name"
     t.string   "email"
     t.integer  "account_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.boolean  "stand_certified", :default => false
   end
 
   add_index "workers", ["account_id", "created_at"], :name => "index_workers_on_account_id_and_created_at"

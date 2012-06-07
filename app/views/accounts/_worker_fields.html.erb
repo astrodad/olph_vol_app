@@ -1,4 +1,12 @@
-<p>
-	<%= f.label :name %>
-  <%= f.text_field :name %>
-</p>
+<div class="well">
+	
+		<%= f.label :name %>
+	  <%= f.text_field :name %>
+	  <% if current_account.admin? %>
+	  <div class="control-group inline"> 
+	  	<%= f.check_box(:stand_certified) %>
+	  	<%= f.label "Worker is STAND certified?", style:"display:inline" %>
+	  </div>
+	  <% end %>
+	
+</div>

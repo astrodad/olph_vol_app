@@ -1,5 +1,5 @@
 class Worker < ActiveRecord::Base
-  attr_accessible :email, :name
+  attr_accessible :email, :name, :stand_certified
 
 
   belongs_to	:account
