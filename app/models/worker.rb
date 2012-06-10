@@ -1,6 +1,9 @@
 class Worker < ActiveRecord::Base
   attr_accessible :email, :name, :stand_certified
 
+  #This is a test add
+  
+
 
   belongs_to	:account
   has_many :VolunteerEvents, :dependent => :destroy
