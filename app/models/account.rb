@@ -3,7 +3,7 @@ class Account < ActiveRecord::Base
   paginates_per 20
   
   attr_accessible :name, :password, :password_confirmation, :email, :year, :admin, :workers_attributes
-  attr_accessor :updating_password #This is not a real field, just a placeholder when doing updates that require a password
+  attr_accessor :updating_password, :creating_account #This is not a real field, just a placeholder when doing updates that require a password
 
   default_scope order: 'name ASC'
 

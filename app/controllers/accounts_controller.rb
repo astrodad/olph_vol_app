@@ -35,6 +35,8 @@ class AccountsController < ApplicationController
   def new
 
     @account = Account.new
+    @account.creating_account = true
+    
     3.times { @account.workers.build}
 
 
