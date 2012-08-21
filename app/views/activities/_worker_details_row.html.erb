@@ -1,0 +1,17 @@
+
+
+<% @workers.each do |worker| %>
+	<tr>
+		<td>
+			<%= worker.name %>
+		</td>
+	<td>
+		<%= worker.friendly_phone %>
+	</td>
+
+	<td>
+		<%= worker.email %>
+	</td>
+	
+	</tr>
+<% end %>

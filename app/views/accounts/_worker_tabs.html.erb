@@ -1,0 +1,45 @@
+<div class="tabbable">
+  <ul class="nav nav-tabs">
+    <li><a href="#Volunteer_1" data-toggle="tab">Volunteer 1</a>
+    <li><a href="#Volunteer_2" data-toggle="tab">Volunteer 2</a></li>
+    <li><a href="#Volunteer_3" data-toggle="tab">Volunteer 3</a></li>
+  </ul>
+  <div class="tab-content">
+   
+
+	  <%= f.fields_for :workers do |builder| %>
+
+        <%= render partial: "worker_fields", locals:  {f:  builder, account: f.object} %>
+
+    <% end %>
+
+  
+  </div>
+  <script type="text/javascript">
+		
+    //Renames the divs for the tabs to work with the JQuery tabbable plugin
+    //Changes the volunteer div content at the top of the tab for each volunteer
+    //Automatically sets the first volunteer's content pane as active
+		$(window).load(function() {
+		
+  		$(".tab-pane").each(function(listIndex){
+  		++listIndex;
+  		this.id = "Volunteer_"+listIndex;
+		});
+
+
+    $(".VolHeaderSpan-").each(function(listIndex){
+
+      ++listIndex;
+      
+      $(this).html('Volunteer '+listIndex);
+
+    });
+
+    $("#Volunteer_1").attr('class', 'tab-pane active')
+
+	});
+
+
+  </script>
+</div>

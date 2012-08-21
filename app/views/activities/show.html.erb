@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Activity:</b>
+  <%= @activity.activity %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @activity.description %>
+</p>
+
+<p>
+  <b>Priority:</b>
+  <%= @activity.priority %>
+</p>
+
+
+<p>
+  <b>Chair:</b>
+  <%= @activity.chair %>
+</p>
+
+<div class="well">
+
+<p> Workers interested in this activity: </p>
+
+
+	<%= render partial: "workers_for_activities", locals: { workers: @workers } %>
+
+</div>
+
+<%= link_to 'Edit', edit_activity_path(@activity) %> |
+<%= link_to 'Back', activities_path %>

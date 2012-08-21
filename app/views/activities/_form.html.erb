@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="span6 offset3">
+      <%= form_for @activity, :html => {:class => "well"}  do |f| %>
+        <% if @activity.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
+
+            <ul>
+            <% @activity.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+       
+          <label>Activity Name</label>
+          <%= f.text_field :activity %>
+       
+        
+          <label>Description of activity</label>
+          <%= f.text_area :description, size: "24x6" %>
+        
+          
+                      
+          <label class="checkbox">Priority?
+            <%= f.check_box :priority %>
+          </label>
+        
+          <label>Chair or coordinator</label>
+          <%= f.text_field :chair %>
+        
+        
+          <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+        
+      <% end %>
+    </div>
+</div>  

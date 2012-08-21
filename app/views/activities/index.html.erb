@@ -1,0 +1,38 @@
+<h1>Activities</h1>
+
+<div class="row">
+
+<% if @activities.any? %>
+
+<table class="table" id="activities_list">
+  <thead>
+    <tr>
+        <th>Activity</th>
+        <th>Description</th>
+        <th>Priority</th>
+        <th>Chair</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+
+    <tbody id="activitieslist">
+
+        <%= render :partial => 'activities_list' %>
+
+    </tbody>
+
+
+
+</table>
+
+<br />
+
+
+</div>
+
+  <% else %>
+      <p> No activities found. </p>
+  <% end %>
+
+  <%= link_to 'Create new Activity', new_activity_path %>

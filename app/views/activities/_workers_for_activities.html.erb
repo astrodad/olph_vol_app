@@ -1,0 +1,19 @@
+ <table class="table" id="workers_for_activity">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Email</th>
+          
+        </thead>
+      </tr>
+      <tbody id="workerslist">
+
+     
+        <%= render partial: "worker_details_row", locals:{ workers: @workers } %>
+
+      </tbody>
+    
+    </table>
+
+
