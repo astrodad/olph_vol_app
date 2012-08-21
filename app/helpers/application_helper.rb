@@ -52,5 +52,13 @@ module ApplicationHelper
 end
 
 
+def field_id_for_js(builder, attribute)
+    "#{builder.object_name}[#{attribute.to_s.sub(/\?$/,"")}]".gsub(/\]\[|[^-a-zA-Z0-9:.]/, "_").sub(/_$/, "")
+end
+
+def field_name_for_js(builder, attribute)
+    "#{builder.object_name}[#{attribute.to_s.sub(/\?$/,"")}]"
+end
+
 
 

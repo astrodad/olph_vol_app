@@ -232,3 +232,11 @@ input, textarea, select, .uneditable-input {
 .control-group.inline { 
     display: inline-block; 
 } 
+
+/* Bootstrap overrides for the site */
+.tab-content {
+  display:  table;
+  /* width:    0; */
+}
+
+

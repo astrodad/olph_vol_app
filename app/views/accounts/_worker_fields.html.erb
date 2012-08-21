@@ -1,14 +1,45 @@
-<div class="well">
-	
-		<%= f.label :name %>
-	  <%= f.text_field :name %>
-	  <% if !@account.creating_account %>
+
+<div class="tab-pane">
+
+	<h3><span class="VolHeaderSpan-">Volunteer</span> </h3>
+ 		
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+
+	<%= f.label "Primary contact phone number (required) " %>
+	<%= f.text_field :phone %>
+
+	<%= f.label "Email address (required) " %>
+	<%= f.text_field :email %>
+
+	<%= f.label "Relationship to student(s)" %>
+	<%= f.select(:relationship, Worker::RELATIONSHIPS) %>
+
+	<%= f.label "Occupation (required) " %>
+	<%= f.text_field :occupation %>
+
+
+
+      <p class="help-block">Please indicate which activities are of interest to this worker. You may specify as many as you like. We will use this information to help match you with volunteer opportunities.</p>
+
+	<%= render :partial => "worker_activities", :locals => {:f => f}  %>
+
+  
+
+	<% if !account.creating_account %>
 	  	<% if  current_account.admin? %>
 	  	<div class="control-group inline"> 
+
 	  	<%= f.check_box(:stand_certified) %>
 	  	<%= f.label "Worker is STAND certified?", style:"display:inline" %>
-	  </div>
-	  <% end %>
-	  <% end %>
-	
+	  	<%= f.label "STAND expiration date" %>
+	  	<%= f.datepicker :stand_expiration_date, dateFormat: "yy-mm-dd", altFormat: "dd-mm-yy" %>
+
+
+	  	</div>
+	  	<% end %>
+	<% end %>
 </div>
+
+
+

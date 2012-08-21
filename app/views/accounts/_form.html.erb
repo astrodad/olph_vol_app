@@ -1,6 +1,7 @@
 <div class="row">
-  <div class="span6 offset3">
-    <%= form_for(@account) do |f| %>
+  
+  <div class="span8 offset2">
+    <%= form_for (setup_account(@account)), :html => {:class => "horizontal"} do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
 
       <%= f.label "Account Name: " %>
@@ -19,18 +20,21 @@
         <%= f.password_field :password_confirmation %>
 
       <% end %>
-      <p> Name up to three people who will work as volunteers for this account: </p>
+      <hr>
 
-      <p class="help-block">These are the names of the workers that will appear on your profile. You should enter values like John Smith, Jame Smith, Sue Sammy-Hoffman, etc.</p>
-
-      <%= f.fields_for :workers do |builder| %>
-        <%= render "worker_fields" , :f => builder %>
-      <% end %>
+      <h2> Volunteer Information </h2>
 
       
+      <p> Volunteer workers are the life blood of the school life. Name up to three people who will work as volunteers for this account: </p>
+
+      <p class="help-block">These are the names of the workers that will appear on your profile. You should enter values like John Smith, Jame Smith, Sue Sammy-Hoffman, etc.  </p>
+
+      <%= render :partial => "worker_tabs", :locals => {:f => f}  %>
+
       
       <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
 
     <% end %>
   </div>
+  
 </div>

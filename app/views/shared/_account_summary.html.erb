@@ -19,7 +19,7 @@
       <div style="padding:5px">
         <ol>
           <% @account.workers.each do  |worker| %>
-              <li><%= worker.name %>
+              <li><%= worker.name %> <%= '(' + worker.relationship + ')' if worker.relationship %>
                 <% if worker.stand_certified? %>
                   <i class="icon-ok"></i>
                 <% end %>

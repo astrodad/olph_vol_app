@@ -39,7 +39,6 @@ class AccountsController < ApplicationController
     
     3.times { @account.workers.build}
 
-
   end
 
   # GET /accounts/1/edit
@@ -60,6 +59,7 @@ class AccountsController < ApplicationController
     @account = Account.new(params[:account])
     @account.updating_password = true
 
+
     if @account.save
       sign_in @account
       flash[:success] = "Account created successfully!"
@@ -77,7 +77,7 @@ class AccountsController < ApplicationController
     respond_to do |format|
 
       # If the current account is an admin user but not the account that is being modified,
-      # they will not have entered a password and we should just aassign the current password values
+      # they will not have entered a password and we should just assign the current password values
       # to the account.
 
     if current_account == @account

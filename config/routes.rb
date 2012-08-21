@@ -1,11 +1,11 @@
 Volunteer::Application.routes.draw do
 
+  resources :accounts
+  resources :workers
+  resources :activities
+
   get "password_resets/new"
 
-  resources :accounts do
-    resources :workers
-
-  end
 
   resources :volunteer_events
 

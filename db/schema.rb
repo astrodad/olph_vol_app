@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120607150527) do
+ActiveRecord::Schema.define(:version => 20120814120516) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -29,6 +29,20 @@ ActiveRecord::Schema.define(:version => 20120607150527) do
   add_index "accounts", ["email"], :name => "index_accounts_on_email", :unique => true
   add_index "accounts", ["remember_token"], :name => "index_accounts_on_remember_token"
 
+  create_table "activities", :force => true do |t|
+    t.string   "activity"
+    t.string   "description"
+    t.boolean  "priority"
+    t.string   "chair"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "activity_workers", :force => true do |t|
+    t.integer "activity_id", :null => false
+    t.integer "worker_id",   :null => false
+  end
+
   create_table "descriptions", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -43,12 +57,6 @@ ActiveRecord::Schema.define(:version => 20120607150527) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "volunteer_event_descriptions", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "volunteer_events", :force => true do |t|
     t.string   "name"
     t.date     "event_date"
@@ -60,15 +68,18 @@ ActiveRecord::Schema.define(:version => 20120607150527) do
   end
 
   add_index "volunteer_events", ["eventtype", "created_at"], :name => "index_volunteer_events_on_eventtype_and_created_at"
-  add_index "volunteer_events", ["worker_id"], :name => "index_volunteer_events_on_worker_id"
 
   create_table "workers", :force => true do |t|
     t.string   "name"
     t.string   "email"
     t.integer  "account_id"
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
-    t.boolean  "stand_certified", :default => false
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+    t.boolean  "stand_certified",       :default => false
+    t.date     "stand_expiration_date"
+    t.string   "relationship"
+    t.string   "phone"
+    t.string   "occupation"
   end
 
   add_index "workers", ["account_id", "created_at"], :name => "index_workers_on_account_id_and_created_at"
