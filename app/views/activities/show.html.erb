@@ -21,14 +21,14 @@
   <%= @activity.chair %>
 </p>
 
-<div class="well">
 
-<p> Workers interested in this activity: </p>
+
+<h3> Workers interested in this activity </h3>
 
 
 	<%= render partial: "workers_for_activities", locals: { workers: @workers } %>
 
-</div>
+
 
 <%= link_to 'Edit', edit_activity_path(@activity) %> |
 <%= link_to 'Back', activities_path %>

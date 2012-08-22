@@ -20,6 +20,12 @@
         <%= f.password_field :password_confirmation %>
 
       <% end %>
+      <p class="help-block">Selecting a correct family type below affects the number of volunteer hours that your family is required to complete, per the <%= link_to 'Family Service Plan', 'http://olphschool.org/content/family-service-plan' %> </p>
+      
+        <%= f.label "Select your family type" %>
+        <%= select_tag(:family_type, options_from_collection_for_select(@family_types, :id, :name)) %>
+
+
       <hr>
 
       <h2> Volunteer Information </h2>
