@@ -21,10 +21,24 @@
 
       <% end %>
       <p class="help-block">Selecting a correct family type below affects the number of volunteer hours that your family is required to complete, per the <%= link_to 'Family Service Plan', 'http://olphschool.org/content/family-service-plan' %> </p>
-      
+
         <%= f.label "Select your family type" %>
         <%= select_tag(:family_type, options_from_collection_for_select(@family_types, :id, :name)) %>
 
+    <% if !@account.creating_account %>
+      <% if  current_account.admin? %>
+      <div class="control-group inline"> 
+
+      <%= f.label "Override hours requirement:", style:"display:inline" %>
+      <%= f.text_field :hours_override_amount, style:"display:inline" %> 
+      <%= f.label "Override note:", style:"display:inline" %>
+      <%= f.text_field :hours_override_note , style:"display:inline"%>
+      
+
+
+      </div>
+      <% end %>
+  <% end %>
 
       <hr>
 
