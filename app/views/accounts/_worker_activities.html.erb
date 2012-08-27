@@ -13,7 +13,7 @@
 
 	<%= f.fields_for :activity_workers do |ff| %>
 	<tr>
-			<td width="30%">
+			<td width="50%">
 				<%= ff.hidden_field :activity_id %>
         <%= ff.check_box :_destroy, {:checked => ff.object.persisted?}, '0', '1' %>
         	<%=  ff.object.activity.activity %>

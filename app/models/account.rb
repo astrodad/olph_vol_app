@@ -25,7 +25,7 @@ class Account < ActiveRecord::Base
 
   validates :password, length: {minimum: 6}, :if => :should_validate_password?
   validates :password_confirmation, presence: true, :if => :should_validate_password?
-  validates :hours_override_amount, presence: true, if: :hours_override_note
+  
   
 
   def create_remember_token

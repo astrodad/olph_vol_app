@@ -83,6 +83,12 @@ include SessionsHelper
   # DELETE /activities/1.json
   def destroy
     @activity = Activity.find(params[:id])
+
+    ActivityWorker.where('activity_id='+params[:id]+'').each do |worker_activity|
+      worker_activity.destroy
+    end
+
+
     @activity.destroy
 
     respond_to do |format|

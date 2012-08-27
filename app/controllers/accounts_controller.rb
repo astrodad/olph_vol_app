@@ -80,7 +80,7 @@ class AccountsController < ApplicationController
   # PUT /accounts/1.json
   def update
     @account = Account.find(params[:id])
-    
+    @family_types = FamilyType.all
     @family_type = FamilyType.find(params[:family_type])
     @account.family_type = @family_type
 

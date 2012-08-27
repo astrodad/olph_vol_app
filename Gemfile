@@ -15,6 +15,8 @@ gem 'jquery-rails'
 gem 'rails3-jquery-autocomplete'
 gem "kaminari", "~> 0.13.0"
 gem 'haml'
+gem 'pdfkit'
+gem 'wkhtmltopdf-binary'
 
 
 group :development, :test do
