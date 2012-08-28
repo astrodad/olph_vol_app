@@ -1,0 +1,35 @@
+<h1>Volunteer Activity Descriptions</h1>
+
+<div class="row">
+
+<% if @descriptions.any? %>
+
+<table class="table" id="description_list">
+  <thead>
+    <tr>
+        <th>Description</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+
+    <tbody id="descriptionslist">
+
+        <%= render :partial => 'descriptions_list' %>
+
+    </tbody>
+
+
+
+</table>
+
+<br />
+
+
+</div>
+
+  <% else %>
+      <p> No descriptions found. </p>
+  <% end %>
+
+  <%= link_to 'Create new description', new_description_path %>

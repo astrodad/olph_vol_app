@@ -1,0 +1,7 @@
+<% @descriptions.each do |description| %>
+  <tr>
+    <td><%= description.name %></td>
+    <td><%= link_to 'Edit', edit_description_path(description) %></td>
+    <td><%= link_to 'Delete', description, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
