@@ -36,6 +36,7 @@ class AccountsController < ApplicationController
 
     @account = Account.new
     @account.creating_account = true
+    @family_types = FamilyType.all
     
     3.times { @account.workers.build}
 
@@ -51,6 +52,8 @@ class AccountsController < ApplicationController
       if difference > 0
         difference.times { @account.workers.build}
       end
+
+    @family_types = FamilyType.all
   end
 
   # POST /accounts
@@ -58,6 +61,10 @@ class AccountsController < ApplicationController
   def create
     @account = Account.new(params[:account])
     @account.updating_password = true
+
+
+    @family_type = FamilyType.find(params[:family_type])
+    @account.family_type = @family_type
 
 
     if @account.save
@@ -73,6 +80,10 @@ class AccountsController < ApplicationController
   # PUT /accounts/1.json
   def update
     @account = Account.find(params[:id])
+    @family_types = FamilyType.all
+    @family_type = FamilyType.find(params[:family_type])
+    @account.family_type = @family_type
+
 
     respond_to do |format|
 

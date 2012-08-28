@@ -56,5 +56,6 @@ module Volunteer
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    config.middleware.use "PDFKit::Middleware", print_media_type: true
   end
 end

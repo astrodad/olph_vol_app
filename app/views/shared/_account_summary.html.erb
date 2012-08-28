@@ -3,8 +3,8 @@
         Account: <%= @account.name %>
       </h3>
       <section>
-        <p>
-          School Year: <%= @account.year %>
+        <div>School Year: <%= @account.year %></div>
+        <div>Family Type: <%= @account.family_type.name %></div>
         </p>
         <% if @account.admin? %>
           <p>

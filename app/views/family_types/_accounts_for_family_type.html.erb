@@ -1,0 +1,16 @@
+ <table class="table" id="accounts_for_family_type">
+      <thead>
+        <tr>
+          <th>Account name</th>
+          <th>Email</th>
+          
+        </thead>
+      </tr>
+      <tbody id="accountslist_for_family_type">
+
+     
+        <%= render partial: "accounts_list_row", locals:{ accounts: @accounts } %>
+
+      </tbody>
+    
+    </table>

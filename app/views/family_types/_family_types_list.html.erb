@@ -1,0 +1,9 @@
+<% @family_types.each do |family_type| %>
+  <tr>
+    <td><%= link_to family_type.name, family_type_path(family_type)%></td>
+    <td><%= family_type.description %></td>
+    <td><%= family_type.hours_required %></td>
+    <td><%= link_to 'Edit', edit_family_type_path(family_type) %></td>
+    <td><%= link_to 'Delete', family_type, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>

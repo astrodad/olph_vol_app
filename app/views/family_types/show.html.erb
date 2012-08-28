@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @family_type.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @family_type.description %>
+</p>
+
+<p>
+  <b>Required Hours:</b>
+  <%= @family_type.hours_required %>
+</p>
+
+<h3> Accounts of this type</h3>
+
+
+	<%= render partial: "accounts_for_family_type", locals: { accounts: @accounts } %>
+
+
+
+
+<%= link_to 'Edit', edit_family_type_path(@family_type) %> |
+<%= link_to 'Back', family_types_path %>

@@ -2,7 +2,8 @@ class Account < ActiveRecord::Base
 
   paginates_per 20
   
-  attr_accessible :name, :password, :password_confirmation, :email, :year, :admin, :workers_attributes
+  attr_accessible :name, :password, :password_confirmation, :email, :year, :admin, :workers_attributes,
+      :hours_override_note, :hours_override_amount
  
   
   attr_accessor :updating_password, :creating_account #This is not a real field, just a placeholder when doing updates that require a password
@@ -12,6 +13,7 @@ class Account < ActiveRecord::Base
   has_secure_password
 
   before_save {|account| account.email = email.downcase }
+  
   before_save :create_remember_token
   before_create {|account| account.year = "2012-2013"}
 
@@ -23,7 +25,7 @@ class Account < ActiveRecord::Base
 
   validates :password, length: {minimum: 6}, :if => :should_validate_password?
   validates :password_confirmation, presence: true, :if => :should_validate_password?
-
+  
   
 
   def create_remember_token
@@ -42,6 +44,8 @@ class Account < ActiveRecord::Base
 
 
   has_many :workers
+  
+  belongs_to :family_type
   
   accepts_nested_attributes_for :workers, :reject_if => lambda { |a| a[:name].blank? }, :allow_destroy => true
 

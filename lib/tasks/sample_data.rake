@@ -17,10 +17,12 @@ namespace :db do
       name  = Faker::Name.last_name + " Account"
       email = "example-#{n+1}@olph.com"
       password  = "password"
-      Account.create!(name: name,
+      acct = Account.create!(name: name,
                    email: email,
                    password: password,
                    password_confirmation: password)
+      
+
     end
 
     
