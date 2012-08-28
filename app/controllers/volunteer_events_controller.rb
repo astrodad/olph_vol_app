@@ -14,6 +14,12 @@ class VolunteerEventsController < ApplicationController
 		@worker = Worker.find(params[:worker])
 		@event = @worker.VolunteerEvents.build(params[:volunteer_event])
 
+
+
+		desc = Description.find_or_create_by_name(@event.name)
+		desc.save
+
+
 		
 		if @event.save
 			flash[:success] = "Hours posted!"
