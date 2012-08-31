@@ -72,6 +72,9 @@ class AccountsController < ApplicationController
       flash[:success] = "Account created successfully!"
       redirect_to @account
     else
+       @account.creating_account = true
+       @family_types = FamilyType.all
+       @family_type = FamilyType.find(params[:family_type])
       render 'new'
     end
   end
