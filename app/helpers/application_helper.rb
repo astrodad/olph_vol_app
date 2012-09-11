@@ -60,5 +60,13 @@ def field_name_for_js(builder, attribute)
     "#{builder.object_name}[#{attribute.to_s.sub(/\?$/,"")}]"
 end
 
+def hours_summary_for_seconds(t)
+
+  mm, ss = t.divmod(60)            #=> [4515, 21]
+  hh, mm = mm.divmod(60)           #=> [75, 15]
+  dd, hh = hh.divmod(24)           #=> [3, 3]
+  
+  "%d hours, %d minutes" % [hh, mm]
+end
 
 

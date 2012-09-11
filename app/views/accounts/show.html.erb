@@ -6,22 +6,28 @@
       <%= render 'shared/account_summary' %>
     </aside>
 
-      
-
-      <span>
-        <h4>Volunteer Hours Quick Reporting Form:</h4>
-          <div style="padding:10px">
-            <%= render 'shared/volunteer_event_report_form' %>
-          </div>
-      </span>
   </div>
 
     <div class="span8">
 
-    <h3>Recent events reported: </h3>
+        <div class="well">
+        <h3>Volunteer Hours Quick Reporting Form:</h3>
+          <div style="padding:10px">
+            <%= render 'shared/volunteer_event_report_form' %>
+          </div>
+        </div>
 
-    <%= render 'shared/workstream' %>
     
     </div>
 
 </div>
+<hr/>
+<div class="row">
+
+  <div class="span12">
+    <h4>Recent events reported: </h4>
+
+    <%= render 'shared/workstream' %>
+  </div>
+</div>
+

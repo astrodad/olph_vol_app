@@ -239,6 +239,10 @@ input, textarea, select, .uneditable-input {
   /* width:    0; */
 }
 
+.control-group.inline { 
+    display: inline-block; 
+} 
+
 @media print {
   
 /* Add stuff to not break on page for the tables for the data */

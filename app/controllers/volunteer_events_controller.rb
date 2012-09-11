@@ -13,7 +13,12 @@ class VolunteerEventsController < ApplicationController
 		@account = Account.find(params[:account])
 		@worker = Worker.find(params[:worker])
 		@event = @worker.VolunteerEvents.build(params[:volunteer_event])
+		@event.user_update = true
 
+		hours = @event.hour_worked
+		minutes = @event.minute_worked
+
+		@event.hours_worked = (@event.hour_worked.to_i * 3600) + (@event.minute_worked.to_i * 60)	##Need to tweak this
 
 
 		desc = Description.find_or_create_by_name(@event.name)

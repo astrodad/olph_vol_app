@@ -17,6 +17,7 @@ gem "kaminari", "~> 0.13.0"
 gem 'haml'
 gem 'pdfkit'
 gem 'wkhtmltopdf-binary'
+gem 'dotiw'
 
 
 group :development, :test do

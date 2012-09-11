@@ -1,5 +1,9 @@
 class Account < ActiveRecord::Base
 
+  include ActionView::Helpers::DateHelper
+  include ActionView::Helpers::TextHelper
+  include ActionView::Helpers::NumberHelper
+
   paginates_per 20
   
   attr_accessible :name, :password, :password_confirmation, :email, :year, :admin, :workers_attributes,
@@ -35,7 +39,7 @@ class Account < ActiveRecord::Base
   end
 
   def total_hours_worked
-    self.events.sum('hours_worked')
+    hours_summary_for_seconds(self.events.sum('hours_worked'))
   end
 
   def events

@@ -1,22 +1,66 @@
           <% @event = VolunteerEvent.new %>
 
-          <%= form_for(@event) do |f| %>
+          <%= form_for(@event, html: {class: "form-horizontal"}) do |f| %>
        
-            <%= hidden_field_tag(:account, @account.id) %>
-            <%= f.label "Enter the volunteer activity performed:" %>
+            <div class="control-group">
 
+
+            <%= hidden_field_tag(:account, @account.id) %>
+            <%= f.label "Enter the volunteer activity performed", class: "control-label" %>
+            
+            <div class="controls">
             <%= f.autocomplete_field :name , '/descriptions/autocomplete_description_name'  %>
             <p class="help-block">Examples might include: Lunch duty, Green-White Envelope, May Fair, Breakfast with Santa, Field Trip </p>
+            </div>
+          </div>
 
-            <%= f.label :event_date %>
+          <div class="control-group">
+            <%= f.label :event_date, class: "control-label" %>
+            <div class="controls">
             <%= f.datepicker :event_date, dateFormat: "yy-mm-dd", altFormat: "dd-mm-yy" %>
+          </div>
+          </div>
 
-            <%= f.label :hours_worked %>
-            <%= f.text_field :hours_worked %>
+          <div class="control-group">
 
-            <%= label_tag(:name, "Select the person who performed the work") %>
-            <%= select_tag(:worker, options_from_collection_for_select(@account.workers, :id, :name)) %>
-       
-            <%= f.submit "Post", class: "btn btn-large btn-primary" %>
+            <%= f.label "Time worked" , class: "control-label" %>
+            
+            
+              <div class="controls controls-inline">
+              
+            
+                  <%= f.text_field :hour_worked, class: "input-small inline" %>
 
+                  <%= f.label "Hours", style: "display:inline", default: 0 %>
+            
+            
+                  <%= f.text_field :minute_worked ,  class: "input-small inline"%>
+                  <%= f.label "Minutes", style: "display:inline" %>
+            
+              </div>
+                
+            </div>  
+            
+
+            <div class="control-group">
+
+              <%= f.label "Person performing the work", class: "control-label" %>
+              <div class="controls">
+
+              <%= select_tag(:worker, options_from_collection_for_select(@account.workers, :id, :name)) %>
+
+
+              </div>
+
+              <div class="control-group">
+                <div class="controls">
+                  <br/>
+                  <%= f.submit "Post", class: "btn btn-large btn-primary" %>
+                </div>
+              </div>
+              
+            </div>
+
+
+            
           <% end %>
