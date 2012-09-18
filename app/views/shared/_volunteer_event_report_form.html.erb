@@ -9,8 +9,11 @@
             <%= f.label "Enter the volunteer activity performed", class: "control-label" %>
             
             <div class="controls">
-            <%= f.autocomplete_field :name , '/descriptions/autocomplete_description_name'  %>
-            <p class="help-block">Examples might include: Lunch duty, Green-White Envelope, May Fair, Breakfast with Santa, Field Trip </p>
+
+            <%= select_tag(:name, options_from_collection_for_select(Description.all, :id, :name)) %>
+
+            
+            <p class="help-block">Select the volunteer event you are reporting. If your event is not listed, please contact the HSA to have your event added at: <a href="mailto:olph.hsa@gmail.com?Subject=Add%20event%20for%20volunteer%20reporting">olph.hsa@gmail.com</a>. </p>
             </div>
           </div>
 

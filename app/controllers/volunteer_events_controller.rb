@@ -20,14 +20,13 @@ class VolunteerEventsController < ApplicationController
 
 		@event.hours_worked = (@event.hour_worked.to_i * 3600) + (@event.minute_worked.to_i * 60)	##Need to tweak this
 
-
-		desc = Description.find_or_create_by_name(@event.name)
-		desc.save
-
+		
+		desc = Description.find(params[:name])
+		@event.name = desc.name
 
 		
 		if @event.save
-			flash[:success] = "Hours posted!"
+			flash[:success] = "Hours posted for " + @event.name + "!"
 		else 
 			flash[:error] = @event.errors.full_messages.to_sentence
 		end
