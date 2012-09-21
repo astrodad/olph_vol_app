@@ -18,9 +18,14 @@
 #	account.save!
 #end
 
-VolunteerEvent.all.each do |event|
-	event.hours_worked = event.hours_worked * 3600 #Convert hours into seconds
-	event.save!
+#VolunteerEvent.all.each do |event|
+#	event.hours_worked = event.hours_worked * 3600 #Convert hours into seconds
+#	event.save!
+# end
+
+Activity.all.each do |activity|
+	desc = Description.new(name: activity.activity)
+	desc.save!
 end
 
 
