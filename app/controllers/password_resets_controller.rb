@@ -7,10 +7,17 @@ class PasswordResetsController < ApplicationController
 
 
   def create
-    account = Account.find_by_email(params[:email])
-    account.send_password_reset if account
-    flash[:success] = "Email sent with password reset instructions."
-    redirect_to pass_reset_path
+    #Fixing defect found when user inputs email with uppercase in password rest
+    account = Account.where('lower(email) = ?' , params[:email].downcase).first
+
+    if account.nil?
+      flash[:error] = "No account found with that email address. Please check it and try again."
+      redirect_to new_password_reset_path
+    else
+      account.send_password_reset if account
+      flash[:success] = "Email sent with password reset instructions."
+      redirect_to pass_reset_path
+    end
   end
 
   def edit
