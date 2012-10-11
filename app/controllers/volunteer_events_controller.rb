@@ -13,7 +13,12 @@ class VolunteerEventsController < ApplicationController
 		@account = Account.find(params[:account])
 		@worker = Worker.find(params[:worker])
 		@event = @worker.VolunteerEvents.build(params[:volunteer_event])
-		@event.user_update = true
+		
+		if admin_account?
+			@event.user_update = false
+		else
+			@event.user_update = true
+		end
 
 		hours = @event.hour_worked
 		minutes = @event.minute_worked
