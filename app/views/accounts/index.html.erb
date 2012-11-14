@@ -1,6 +1,11 @@
 
 
-<h1>All Accounts</h1>
+<h1>Accounts</h1>
+<div class="row">
+
+
+</div>
+
 <% if @accounts.any? 
   
   %>
@@ -8,7 +13,8 @@
   <div class="row">
   
   
-    
+  
+
     <table class="table" id="account_list">
       <thead>
         <tr>
@@ -27,7 +33,7 @@
       </tbody>
     
     </table>
-  <%= paginate @accounts, :remote => true %>
+  <%= paginate @accounts, remote: false, outer_window: 10  %>
   
     
 

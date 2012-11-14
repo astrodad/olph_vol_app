@@ -13,8 +13,24 @@
 
 ActiveRecord::Schema.define(:version => 20120822161556) do
 
-# Could not dump table "accounts" because of following StandardError
-#   Unknown type 'reference' for column 'family_type'
+  create_table "accounts", :force => true do |t|
+    t.string   "name"
+    t.string   "year"
+    t.boolean  "admin",                  :default => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+    t.string   "email"
+    t.string   "password_digest"
+    t.string   "remember_token"
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
+    t.string   "hours_override_note"
+    t.integer  "hours_override_amount"
+    t.integer  "family_type_id"
+  end
+
+  add_index "accounts", ["email"], :name => "index_accounts_on_email", :unique => true
+  add_index "accounts", ["remember_token"], :name => "index_accounts_on_remember_token"
 
   create_table "activities", :force => true do |t|
     t.string   "activity"

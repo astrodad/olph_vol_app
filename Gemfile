@@ -5,7 +5,7 @@ gem 'sass-rails', '~> 3.2'
 gem 'bootstrap-sass', '~> 2.0.4.0'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'faker', '1.0.1'
-gem 'will_paginate', '3.0.3'
+gem 'will_paginate'
 gem 'bootstrap-will_paginate', '0.0.5'
 gem 'debugger'
 gem 'validates_timeliness', '~> 3.0.2'
@@ -13,7 +13,7 @@ gem "dynamic_form"
 gem 'jquery_datepicker'
 gem 'jquery-rails'
 gem 'rails3-jquery-autocomplete'
-gem "kaminari", "~> 0.13.0"
+gem "kaminari"
 gem 'haml'
 gem 'pdfkit'
 gem 'wkhtmltopdf-binary'

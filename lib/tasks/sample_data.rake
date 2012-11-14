@@ -13,24 +13,27 @@ namespace :db do
     end
 
     
-    80.times do |n|
+    160.times do |n|
       name  = Faker::Name.last_name + " Account"
       email = "example-#{n+1}@olph.com"
       password  = "password"
+      default_family_type = FamilyType.first
       acct = Account.create!(name: name,
                    email: email,
                    password: password,
-                   password_confirmation: password)
+                   password_confirmation: password,
+                   #family_type: default_family_type
+                   )
       
 
     end
 
     
-    accounts = Account.all
-    3.times do
-      workername = Faker::Name.name
-      accounts.each { |account| account.workers.create!(name: workername) }
-    end
+    #accounts = Account.all
+    #3.times do
+    #  workername = Faker::Name.name
+    #  Account.each { |account| account.workers.create!(name: workername) }
+    #end
 
 
     
