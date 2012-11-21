@@ -6,4 +6,4 @@
 -#    per_page:      number of items to fetch per page
 -#    remote:        data-remote
 %li.last{:class => "#{'active' if current_page.last?}"}
-  = link_to num_pages, url, {:remote => remote}
+  = link_to total_pages, url, {:remote => remote}

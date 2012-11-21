@@ -11,7 +11,7 @@
       = prev_page_tag
       = first_page_tag
       - each_page do |page|
-        - unless page == 1 || page == num_pages
+        - unless page == 1 || page == total_pages
           - if page.left_outer? || page.right_outer? || page.inside_window?
             = page_tag page 
           - elsif !page.was_truncated?
