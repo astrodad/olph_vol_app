@@ -11,14 +11,14 @@ gem 'debugger'
 gem 'validates_timeliness', '~> 3.0.2'
 gem "dynamic_form"
 gem 'jquery_datepicker'
-gem 'jquery-rails'
+gem 'jquery-rails', '<3.0.0'
 gem 'rails3-jquery-autocomplete'
 gem "kaminari"
 gem 'haml'
 gem 'pdfkit'
 gem 'wkhtmltopdf-binary'
 gem 'dotiw'
-gem 'jquery_ui'
+
 
 
 group :development, :test do
