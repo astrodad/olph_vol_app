@@ -18,7 +18,7 @@ gem 'haml'
 gem 'pdfkit'
 gem 'wkhtmltopdf-binary'
 gem 'dotiw'
-gem 'jquery-ui'
+gem 'jquery_ui'
 
 
 group :development, :test do
