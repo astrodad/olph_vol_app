@@ -19,7 +19,7 @@ class Account < ActiveRecord::Base
   before_save {|account| account.email = email.downcase }
   
   before_save :create_remember_token
-  before_create {|account| account.year = "2012-2013"}
+  before_create {|account| account.year = "2013-2014"}
 
   validates :name, presence: true, length: {maximum: 50}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -30,7 +30,8 @@ class Account < ActiveRecord::Base
   validates :password, length: {minimum: 6}, :if => :should_validate_password?
   validates :password_confirmation, presence: true, :if => :should_validate_password?
   
-  
+  #Defines the current year start date for archive purposes
+  CURRENT_YEAR_START_DATE = '2013-07-01 00:00:00'
 
   def create_remember_token
     if self.remember_token.nil?
@@ -43,8 +44,13 @@ class Account < ActiveRecord::Base
   end
 
   def events
-     VolunteerEvent.joins(:worker => :account).where(:accounts => {id: self.id})
+     VolunteerEvent.joins(:worker => :account).where(:accounts => {id: self.id}).where('event_date >= ?', CURRENT_YEAR_START_DATE)
   end
+
+  def archive_events
+    VolunteerEvent.joins(:worker => :account).where(:accounts => {id: self.id}).where('event_date < ?', CURRENT_YEAR_START_DATE)   
+  end
+
 
 
   has_many :workers
