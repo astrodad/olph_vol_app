@@ -219,7 +219,7 @@ DEPENDENCIES
   guard-rspec (= 0.5.5)
   guard-spork (= 0.3.2)
   haml
-  jquery-rails
+  jquery-rails (< 3.0.0)
   jquery_datepicker
   kaminari
   pdfkit
